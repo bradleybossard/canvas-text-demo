@@ -3,6 +3,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
 
+
+  function drawText() {
+		//ctx.font = '50px "Droid Sans"';
+		ctx.font = '50px "Yatra One"';
+		ctx.textBaseline = 'top';
+		ctx.fillText('Hello!', 20, 10);
+		ctx.strokeStyle = "lime"; // line color
+		ctx.strokeText("Hello world", 20, 10);
+  }
+
 	var img = new Image();
 
 	//drawing of the test image - img1
@@ -33,17 +43,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		inactive: function() {},
 		fontloading: function(familyName, fvd) {},
 		fontactive: function(familyName, fvd) {
-			//ctx.font = '50px "Droid Sans"';
-
-
-			ctx.font = '50px "Yatra One"';
-			ctx.textBaseline = 'top';
-			ctx.fillText('Hello!', 20, 10);
-			ctx.strokeStyle = "lime"; // line color
-			ctx.strokeText("Hello world", 20, 10);
+			drawText();
 		},
 		fontinactive: function(familyName, fvd) {}
 	};
+
 
 	(function(d) {
 		var wf = d.createElement('script'), s = d.scripts[0];
