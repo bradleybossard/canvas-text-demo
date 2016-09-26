@@ -3,6 +3,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
 
+	var img1 = new Image();
+
+	//drawing of the test image - img1
+	img1.onload = function () {
+			//draw background image
+			ctx.drawImage(img1, 0, 0);
+			//draw a transparent box over the top
+			//ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
+			//ctx.fillRect(0, 0, 500, 500);
+	};
+
+	img1.src = 'http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg';
+
 	WebFontConfig = {
 		google: {
 			//families: ['Droid Sans', 'Droid Serif']
@@ -16,10 +29,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		fontloading: function(familyName, fvd) {},
 		fontactive: function(familyName, fvd) {
 			//ctx.font = '50px "Droid Sans"';
+
+
 			ctx.font = '50px "Yatra One"';
 			ctx.textBaseline = 'top';
 			ctx.fillText('Hello!', 20, 10);
-			ctx.strokeStyle = "sienna"; // line color
+			ctx.strokeStyle = "lime"; // line color
 			ctx.strokeText("Hello world", 20, 10);
 		},
 		fontinactive: function(familyName, fvd) {}
