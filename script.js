@@ -3,18 +3,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
 
-	var img1 = new Image();
+	var img = new Image();
 
 	//drawing of the test image - img1
-	img1.onload = function () {
+	img.onload = function () {
 			//draw background image
-			ctx.drawImage(img1, 0, 0);
+      canvas.width = img.width;
+      canvas.height= img.height;
+			ctx.drawImage(img, 0, 0);
 			//draw a transparent box over the top
 			//ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
 			//ctx.fillRect(0, 0, 500, 500);
 	};
 
-	img1.src = 'http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg';
+	var imageUrl = 'http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg';
+	img.src = imageUrl;
 
 	WebFontConfig = {
 		google: {
