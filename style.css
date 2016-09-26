@@ -1,3 +1,33 @@
+header {
+  text-align: center;
+}
+
+.center {
+  align: center;
+}
+
 body {
   background-color: #DDDDDD;
+}
+
+/*
+Center  of screen
+#canvas {
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+*/
+
+#canvas-container {
+   width: 100%;
+   text-align:center;
+}
+
+#canvas {
+   display: inline;
 }

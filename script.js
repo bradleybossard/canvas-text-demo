@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
 
-
   function drawText() {
 		//ctx.font = '50px "Droid Sans"';
 		ctx.font = '50px "Yatra One"';
