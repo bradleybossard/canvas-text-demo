@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	//drawing of the test image - img1
 	img.onload = function () {
 			//draw background image
-      canvas.width = img.width;
-      canvas.height= img.height;
-			ctx.drawImage(img, 0, 0);
+			var newWidth = img.width / 2;
+			var newHeight = img.height / 2;
+      canvas.width = newWidth;
+      canvas.height= newHeight;
+			ctx.drawImage(img, 0, 0, newWidth, newHeight);
 			//draw a transparent box over the top
 			//ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
 			//ctx.fillRect(0, 0, 500, 500);
