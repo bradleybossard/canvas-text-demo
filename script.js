@@ -1,14 +1,19 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+
+var app = angular.module('myApp', [])
+.controller('myCtrl', function($scope, $http) {
+
+  $scope.strokeColor = '#ff0000';
 
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
 
-  function drawText() {
+  $scope.drawText = function() {
 		//ctx.font = '50px "Droid Sans"';
 		ctx.font = '50px "Yatra One"';
 		ctx.textBaseline = 'top';
 		ctx.fillText('Hello!', 20, 10);
-		ctx.strokeStyle = "lime"; // line color
+		//ctx.strokeStyle = "lime"; // line color
+		ctx.strokeStyle = $scope.strokeColor; // line color
 		ctx.strokeText("Hello world", 20, 10);
   }
 
@@ -42,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		inactive: function() {},
 		fontloading: function(familyName, fvd) {},
 		fontactive: function(familyName, fvd) {
-			drawText();
+			$scope.drawText();
 		},
 		fontinactive: function(familyName, fvd) {}
 	};
