@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			ctx.font = '50px "Yatra One"';
 			ctx.textBaseline = 'top';
 			ctx.fillText('Hello!', 20, 10);
+			ctx.strokeStyle = "sienna"; // line color
+			ctx.strokeText("Hello world", 20, 10);
 		},
 		fontinactive: function(familyName, fvd) {}
 	};
