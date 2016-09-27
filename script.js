@@ -2,6 +2,8 @@
 var app = angular.module('myApp', [])
 .controller('myCtrl', function($scope, $http) {
 
+  $scope.xPos = 0;
+  $scope.yPos = 0;
   $scope.strokeColor = '#ff0000';
 
 	var canvas = document.getElementById('canvas');
@@ -11,10 +13,10 @@ var app = angular.module('myApp', [])
 		//ctx.font = '50px "Droid Sans"';
 		ctx.font = '50px "Yatra One"';
 		ctx.textBaseline = 'top';
-		ctx.fillText('Hello!', 20, 10);
-		//ctx.strokeStyle = "lime"; // line color
+		ctx.fillText('Hello!', $scope.xPos, $scope.yPos);
+		console.log($scope.xPos);
 		ctx.strokeStyle = $scope.strokeColor; // line color
-		ctx.strokeText("Hello world", 20, 10);
+		ctx.strokeText("Hello world", $scope.xPos, $scope.yPos);
   }
 
 	var img = new Image();
