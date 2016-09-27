@@ -23,8 +23,13 @@
 
   <div ng-app="myApp" ng-controller="myCtrl" class="container">
 		<div class="form-group">
-			<label for="stroke_color">Stroke Color</label>
-			<input type="color" name="stroke_color" class="form-control" placeholder="#ff0000" ng-model="strokeColor" ng-change="drawText()">
+			<label for="stroke-color">Stroke Color</label>
+			<input type="color" name="stroke-color" class="form-control" ng-model="strokeColor" ng-change="drawText()">
+		</div>
+
+		<div class="form-group">
+			<label for="fill-color">Fill Color</label>
+			<input type="color" name="fill-color" class="form-control" ng-model="fillColor" ng-change="drawText()">
 		</div>
 
 		<div class="form-group">

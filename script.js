@@ -5,6 +5,8 @@ var app = angular.module('myApp', [])
   $scope.xPos = 0;
   $scope.yPos = 0;
   $scope.strokeColor = '#ff0000';
+  $scope.fillColor = '#00ff00';
+  $scope.textContent = 'Hello World';
 
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
@@ -25,9 +27,10 @@ var app = angular.module('myApp', [])
     clearContexts();
 		textCtx.font = '50px "Yatra One"';
 		textCtx.textBaseline = 'top';
-		textCtx.fillText('Hello!', $scope.xPos, $scope.yPos);
+		textCtx.fillStyle = $scope.fillColor; // line color
+		textCtx.fillText($scope.textContent, $scope.xPos, $scope.yPos);
 		textCtx.strokeStyle = $scope.strokeColor; // line color
-		textCtx.strokeText("Hello world", $scope.xPos, $scope.yPos);
+		textCtx.strokeText($scope.textContent, $scope.xPos, $scope.yPos);
   }
 
 
