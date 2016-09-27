@@ -2,8 +2,8 @@
 var app = angular.module('myApp', [])
 .controller('myCtrl', function($scope, $http) {
 
-  $scope.xPos = 0;
-  $scope.yPos = 0;
+  $scope.xTextPos = 0;
+  $scope.yTextPos = 0;
   $scope.strokeColor = '#ff0000';
   $scope.fillColor = '#00ff00';
   $scope.textContent = 'Hello World';
@@ -40,9 +40,9 @@ var app = angular.module('myApp', [])
 		textCtx.font = '50px "Yatra One"';
 		textCtx.textBaseline = 'top';
 		textCtx.fillStyle = $scope.fillColor; // line color
-		textCtx.fillText($scope.textContent, $scope.xPos, $scope.yPos);
+		textCtx.fillText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
 		textCtx.strokeStyle = $scope.strokeColor; // line color
-		textCtx.strokeText($scope.textContent, $scope.xPos, $scope.yPos);
+		textCtx.strokeText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
   }
 
   function drawImage() {
