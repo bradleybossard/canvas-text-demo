@@ -22,6 +22,18 @@ var app = angular.module('myApp', [])
     drawImage();
 	}
 
+  $scope.mouseDown = function($event) {
+    console.log('down');
+  }
+
+  $scope.mouseUp = function($event) {
+    console.log('up');
+  }
+
+  $scope.mouseMove = function($event) {
+    console.log($event);
+  }
+
   $scope.drawText = function() {
 		//textCtx.font = '50px "Droid Sans"';
     clearContexts();
@@ -32,7 +44,6 @@ var app = angular.module('myApp', [])
 		textCtx.strokeStyle = $scope.strokeColor; // line color
 		textCtx.strokeText($scope.textContent, $scope.xPos, $scope.yPos);
   }
-
 
   function drawImage() {
 			//draw background image
