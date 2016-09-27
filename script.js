@@ -9,20 +9,29 @@ var app = angular.module('myApp', [])
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
 
-  $scope.drawText = function() {
-		//ctx.font = '50px "Droid Sans"';
-		ctx.font = '50px "Yatra One"';
-		ctx.textBaseline = 'top';
-		ctx.fillText('Hello!', $scope.xPos, $scope.yPos);
-		console.log($scope.xPos);
-		ctx.strokeStyle = $scope.strokeColor; // line color
-		ctx.strokeText("Hello world", $scope.xPos, $scope.yPos);
-  }
+	var textCanvas = document.getElementById('text-canvas');
+	var textCtx = canvas.getContext('2d');
 
 	var img = new Image();
 
-	//drawing of the test image - img1
-	img.onload = function () {
+  function clearContexts() {
+		textCtx.fillStyle = "rgba(0, 0, 0, 0.0)";
+		textCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
+    drawImage();
+	}
+
+  $scope.drawText = function() {
+		//textCtx.font = '50px "Droid Sans"';
+    clearContexts();
+		textCtx.font = '50px "Yatra One"';
+		textCtx.textBaseline = 'top';
+		textCtx.fillText('Hello!', $scope.xPos, $scope.yPos);
+		textCtx.strokeStyle = $scope.strokeColor; // line color
+		textCtx.strokeText("Hello world", $scope.xPos, $scope.yPos);
+  }
+
+
+  function drawImage() {
 			//draw background image
 			var newWidth = img.width / 2;
 			var newHeight = img.height / 2;
@@ -32,6 +41,11 @@ var app = angular.module('myApp', [])
 			//draw a transparent box over the top
 			//ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
 			//ctx.fillRect(0, 0, 500, 500);
+	}
+
+	//drawing of the test image - img1
+	img.onload = function () {
+    drawImage();
 	};
 
 	var imageUrl = 'http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg';
