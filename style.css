@@ -10,6 +10,10 @@ body {
   background-color: #DDDDDD;
 }
 
+.container {
+  width: 600px;
+}
+
 #canvas-container {
   margin: 40px auto;
   width: 100%;
