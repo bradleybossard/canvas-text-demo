@@ -2,10 +2,13 @@
 var app = angular.module('myApp', [])
 .controller('myCtrl', function($scope, $http) {
 
+  var mouseDownX = 0;
+  var mouseDownY = 0;
+  var mouseDiffX = 0;
+  var mouseDiffY = 0;
+
   $scope.xTextPos = 0;
   $scope.yTextPos = 0;
-  $scope.mouseDownX = -1;
-  $scope.mouseDownY = -1;
   $scope.strokeColor = '#ff0000';
   $scope.fillColor = '#00ff00';
   $scope.textContent = 'Hello World';
@@ -25,21 +28,24 @@ var app = angular.module('myApp', [])
 	}
 
   $scope.mouseDown = function($event) {
-    console.log('down');
-    $scope.mouseDownX = $event.offsetX;
-    $scope.mouseDownY = $event.offsetY;
+    mouseDownX = $event.offsetX;
+    mouseDownY = $event.offsetY;
   }
 
   $scope.mouseUp = function($event) {
-    console.log('up');
-    $scope.mouseDownX = -1;
-    $scope.mouseDownY = -1;
+		$scope.xTextPos += mouseDiffX;
+    $scope.yTextPos += mouseDiffY;
+    mouseDownX = 0;
+    mouseDownY = 0;
+    mouseDiffX = 0;
+    mouseDiffY = 0;
   }
 
   $scope.mouseMove = function($event) {
-    //console.log($event);
-    if ($scope.mouseDownX != -1 && $scope.mouseDownY != -1) {
-      console.log($scope.mouseDownX, $scope.mouseDownY);
+    if (mouseDownX != 0 && mouseDownY != 0) {
+      mouseDiffX = $event.offsetX - mouseDownX;
+      mouseDiffY = $event.offsetY - mouseDownY;
+      $scope.redraw();
     }
   }
 
@@ -48,9 +54,9 @@ var app = angular.module('myApp', [])
 		ctx.font = '50px "Yatra One"';
 		ctx.textBaseline = 'top';
 		ctx.fillStyle = $scope.fillColor; // line color
-		ctx.fillText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
+		ctx.fillText($scope.textContent, $scope.xTextPos + mouseDiffX, $scope.yTextPos + mouseDiffY);
 		ctx.strokeStyle = $scope.strokeColor; // line color
-		ctx.strokeText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
+		ctx.strokeText($scope.textContent, $scope.xTextPos + mouseDiffX, $scope.yTextPos + mouseDiffY);
   }
 
   function drawImage() {
