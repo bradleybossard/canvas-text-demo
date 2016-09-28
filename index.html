@@ -19,33 +19,32 @@
   <div ng-app="myApp" ng-controller="myCtrl" class="container">
 
     <div id="canvas-container" ng-mousedown="mouseDown($event)" ng-mouseup="mouseUp($event)" ng-mousemove="mouseMove($event)" >
-       <canvas id="text-canvas"></canvas>
        <canvas id="canvas">Your browser doesn't support canvas</canvas>
     </div>
 
 		<div class="form-group">
 			<label for="text-content">Text Content</label>
-			<input type="text" name="text-content" class="form-control" ng-model="textContent" ng-change="drawText()">
+			<input type="text" name="text-content" class="form-control" ng-model="textContent" ng-change="redraw()">
 		</div>
 
 		<div class="form-group">
 			<label for="stroke-color">Stroke Color</label>
-			<input type="color" name="stroke-color" class="form-control" ng-model="strokeColor" ng-change="drawText()">
+			<input type="color" name="stroke-color" class="form-control" ng-model="strokeColor" ng-change="redraw()">
 		</div>
 
 		<div class="form-group">
 			<label for="fill-color">Fill Color</label>
-			<input type="color" name="fill-color" class="form-control" ng-model="fillColor" ng-change="drawText()">
+			<input type="color" name="fill-color" class="form-control" ng-model="fillColor" ng-change="redraw()">
 		</div>
 
 		<div class="form-group">
 			<label for="x-text-position">X Text Position</label>
-			<input type="number" name="x-text-position" class="form-control" placeholder="X Position" ng-model="xTextPos" ng-change="drawText()">
+			<input type="number" name="x-text-position" class="form-control" placeholder="X Position" ng-model="xTextPos" ng-change="redraw()">
 		</div>
 
 		<div class="form-group">
 			<label for="y-text-position">Y Text Position</label>
-			<input type="number" name="y-text-position" class="form-control" placeholder="Y Position" ng-model="yTextPos" ng-change="drawText()">
+			<input type="number" name="y-text-position" class="form-control" placeholder="Y Position" ng-model="yTextPos" ng-change="redraw()">
 		</div>
 
   </div> <!-- end app -->

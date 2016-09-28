@@ -4,57 +4,68 @@ var app = angular.module('myApp', [])
 
   $scope.xTextPos = 0;
   $scope.yTextPos = 0;
+  $scope.mouseDownX = -1;
+  $scope.mouseDownY = -1;
   $scope.strokeColor = '#ff0000';
   $scope.fillColor = '#00ff00';
   $scope.textContent = 'Hello World';
 
+	var canvasContainer = document.getElementById('canvas-container');
+
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
 
-	var textCanvas = document.getElementById('text-canvas');
-	var textCtx = canvas.getContext('2d');
-
 	var img = new Image();
 
-  function clearContexts() {
-		textCtx.fillStyle = "rgba(0, 0, 0, 0.0)";
-		textCtx.clearRect(0, 0, textCanvas.width, textCanvas.height);
+  $scope.redraw = function() {
+		ctx.fillStyle = "rgba(0, 0, 0, 0.0)";
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawImage();
+    drawText();
 	}
 
   $scope.mouseDown = function($event) {
     console.log('down');
+    $scope.mouseDownX = $event.offsetX;
+    $scope.mouseDownY = $event.offsetY;
   }
 
   $scope.mouseUp = function($event) {
     console.log('up');
+    $scope.mouseDownX = -1;
+    $scope.mouseDownY = -1;
   }
 
   $scope.mouseMove = function($event) {
-    console.log($event);
+    //console.log($event);
+    if ($scope.mouseDownX != -1 && $scope.mouseDownY != -1) {
+      console.log($scope.mouseDownX, $scope.mouseDownY);
+    }
   }
 
-  $scope.drawText = function() {
+  function drawText() {
 		//textCtx.font = '50px "Droid Sans"';
-    clearContexts();
-		textCtx.font = '50px "Yatra One"';
-		textCtx.textBaseline = 'top';
-		textCtx.fillStyle = $scope.fillColor; // line color
-		textCtx.fillText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
-		textCtx.strokeStyle = $scope.strokeColor; // line color
-		textCtx.strokeText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
+		ctx.font = '50px "Yatra One"';
+		ctx.textBaseline = 'top';
+		ctx.fillStyle = $scope.fillColor; // line color
+		ctx.fillText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
+		ctx.strokeStyle = $scope.strokeColor; // line color
+		ctx.strokeText($scope.textContent, $scope.xTextPos, $scope.yTextPos);
   }
 
   function drawImage() {
-			//draw background image
-			var newWidth = img.width / 2;
-			var newHeight = img.height / 2;
-      canvas.width = newWidth;
-      canvas.height= newHeight;
-			ctx.drawImage(img, 0, 0, newWidth, newHeight);
-			//draw a transparent box over the top
-			//ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
-			//ctx.fillRect(0, 0, 500, 500);
+    //draw background image
+    var newWidth = img.width / 2;
+    var newHeight = img.height / 2;
+    console.log(img.height, newHeight);
+    canvasContainer.style.width = newWidth + 'px';
+    canvasContainer.style.height= newHeight + 'px';
+    canvas.width = newWidth;
+    canvas.height= newHeight;
+    ctx.drawImage(img, 0, 0, newWidth, newHeight);
+    //draw a transparent box over the top
+    //ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
+    //ctx.fillRect(0, 0, 500, 500);
 	}
 
 	//drawing of the test image - img1
@@ -77,7 +88,7 @@ var app = angular.module('myApp', [])
 		inactive: function() {},
 		fontloading: function(familyName, fvd) {},
 		fontactive: function(familyName, fvd) {
-			$scope.drawText();
+			drawText();
 		},
 		fontinactive: function(familyName, fvd) {}
 	};

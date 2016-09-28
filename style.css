@@ -10,24 +10,10 @@ body {
   background-color: #DDDDDD;
 }
 
-/*
-Center  of screen
-#canvas {
-
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin:auto;
-}
-*/
-
 #canvas-container {
-   width: 100%;
-   text-align:center;
-}
-
-#canvas {
-   display: inline;
+  margin: 40px auto;
+  width: 100%;
+  text-align:center;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 0 9px 20px -5px rgba(0,0,0,0.8);
 }
